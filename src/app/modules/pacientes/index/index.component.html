@@ -1,0 +1,15 @@
+<h2 class="ms-5">Pacientes</h2>
+
+<div class="row justify-content-end">
+    <div class="primary col-4" >
+        <a mat-fab extended routerLink="/pacientes/add" ><mat-icon>add</mat-icon>Agregar</a>
+    </div>
+</div>
+
+<app-list-pacientes [pacientes]="pacientes" [columns]="columns" (deleted)="recordDelete()" ></app-list-pacientes>
+
+<mat-paginator showFirstLastButtons [length]="totalRecords" 
+        [pageIndex]="paginationDto.pageNumber-1"
+        [pageSize]="paginationDto.recordsPage" 
+        [pageSizeOptions]="[10,25,50]" class="mat-elevation-z8" (page)="onPageChange($event)" [pageIndex]="paginationDto.pageNumber-1"></mat-paginator>
+<!--  114-->

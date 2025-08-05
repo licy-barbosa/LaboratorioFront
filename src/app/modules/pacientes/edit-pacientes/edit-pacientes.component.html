@@ -1,0 +1,10 @@
+<div class="container">
+    <h2>Editar paciente</h2>
+    @if(paciente){
+        <app-show-errores [errores]="errores"></app-show-errores>
+        <app-form-pacientes [model]="paciente" (postForm)="saveChanges($event)"></app-form-pacientes>
+    }
+    @else{
+        <app-loading></app-loading>
+    }
+</div>

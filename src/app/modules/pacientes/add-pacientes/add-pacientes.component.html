@@ -1,0 +1,5 @@
+<div class="container">
+    <h2>Nuevo paciente</h2>
+    <app-show-errores [errores]="errores"></app-show-errores>
+    <app-form-pacientes (postForm)="saveChanges($event)"></app-form-pacientes>
+</div>

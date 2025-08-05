@@ -1,0 +1,50 @@
+@if(!pacientes){
+    <app-loading></app-loading>
+}
+@else if(pacientes.length === 0){
+    <p>No hay elementos para mostrar</p>
+}
+@else{
+<div class="row">
+    <div class="col-10 offset-1">
+        <table class="table mat-elevation-z8">
+            <thead>
+              <tr>
+                <th scope="col">NSS</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Edad</th>
+                <th scope="col">Genero</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+                @for(paciente of pacientes; track $index){
+                     <tr>
+                        <td>{{paciente.nss}}</td>
+                        <td>{{paciente.nombre}}</td>
+                        <td>{{paciente.edad}}</td>
+               
+                        <td>{{paciente.genero.nameGenero}}</td> 
+
+                        <td [width]="120">
+                            <div class="row justify-content-around">
+                                <div class="col-4">
+                                    <button mat-mini-fab aria-label="Edit" class="primary" routerLink="/pacientes/edit/{{paciente.pacienteId}}"><mat-icon>edit</mat-icon></button>
+                                </div>
+                                <div class="col-4">
+                                    <button mat-mini-fab aria-label="Delete" class="warn" 
+                                    [swal]="{title: 'Confirmación', text:'¿Deseas borrar este registro?', showCancelButton:true}" (confirm)="delete(paciente.pacienteId)">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                    <!-- 114 -->
+            
+                                </div>
+                            </div>
+                        </td>
+                    </tr> 
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+}
