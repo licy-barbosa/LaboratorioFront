@@ -1,30 +1,32 @@
-<!-- <mat-toolbar>
-    <span>
-        <a mat-button>
-            <mat-icon>local_movies</mat-icon> Angular Películas
-        </a>
-    </span>
-</mat-toolbar> -->
-
-
-<mat-toolbar>
+<mat-toolbar  class="bg-secondary px-3">
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button>
     
-    <span>My App
-      <a routerLink="" mat-button></a>
-    </span>
-    <span class="example-spacer"></span>
-    
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
-    </button>
+    <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap">
+        <ul class="nav me-auto mb-2 mb-lg-0 d-flex flex-wrap">
+            <li class="nav-item" >
+                <a class="nav-link text-white" [routerLink]="'pacientes'" routerLinkActive="active">Pacientes</a>
+            </li>
 
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
-    </button>
-    <div><a mat-button routerLink="pacientes">Pacientes</a></div>
+            <li class="nav-item" >
+                <a class="nav-link text-white" [routerLink]="'estudios'" routerLinkActive="active">Estudios</a>
+            </li>
+        </ul>
+        
+        <app-authentication>
+            <ng-content authorized>
+                <div class="d-flex align-items-center mt-2 mt-lg-0">
+                    <small class="text-white fw-semibold me-2">Hello, {{securityService.getClaimValue('emailaddress')}}</small>
+                    <img [src]="profileImage" alt="Perfil" class="rounded-circle border border-light" width="40" height="40">
+                    <a mat-button (click)="securityService.logout()">Logout</a>
+                </div>
+            </ng-content>
 
-    <span><a mat-button routerLink="estudios">Estudios</a></span>
-  </mat-toolbar>
+            <ng-content noAuthorized>
+                <a mat-button routerLink="login">Login</a>
+                <a mat-button routerLink="register">Registro</a>
+            </ng-content>
+        </app-authentication>
+    </div>
+</mat-toolbar>

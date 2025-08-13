@@ -6,10 +6,10 @@
     </div>
 </div>
 
-<app-list-pacientes [pacientes]="pacientes" [columns]="columns" (deleted)="recordDelete()" ></app-list-pacientes>
+<app-list-pacientes [pacientes]="pacientes" [columns]="columns" (deleted)="recordDelete()"></app-list-pacientes>
 
 <mat-paginator showFirstLastButtons [length]="totalRecords" 
         [pageIndex]="paginationDto.pageNumber-1"
         [pageSize]="paginationDto.recordsPage" 
-        [pageSizeOptions]="[10,25,50]" class="mat-elevation-z8" (page)="onPageChange($event)" [pageIndex]="paginationDto.pageNumber-1"></mat-paginator>
+        [pageSizeOptions]="[10,25,50]" class="shadow-lg p-3 mb-5 bg-body rounded" (page)="onPageChange($event)" [pageIndex]="paginationDto.pageNumber-1"></mat-paginator>
 <!--  114-->

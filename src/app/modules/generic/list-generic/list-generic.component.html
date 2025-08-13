@@ -1,0 +1,24 @@
+@if (!list)
+{
+    <div #cargando>
+        <ng-content select="[cargando]"></ng-content>
+    </div>
+
+    @if(!cargando.innerHTML.trim()){
+        <app-loading></app-loading>
+    }
+}
+@else if (list.length === 0) {
+
+    <div #vacio>
+        <ng-content select="[vacio]"></ng-content>
+    </div>
+
+    @if(!vacio.innerHTML.trim()){
+        <div>
+            <p>No hay elementos para mostrar</p>
+        </div>
+    }
+} @else {
+    <ng-content select="[contenido]"></ng-content>
+}

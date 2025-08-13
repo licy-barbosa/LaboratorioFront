@@ -13,12 +13,13 @@ import { AllEstudioDto, FilterEstudioDto } from '../../../dtos/estudioDto';
 import { ResultadosService } from '../../../services/resultados.service';
 import { ListEstudiosComponent } from "../list-estudios/list-estudios.component";
 import { debounceTime } from 'rxjs';
-
+import { SecurityService } from '../../../services/security.service';
+import { AuthenticationComponent } from "../../security/authentication/authentication.component";
 
 @Component({
   selector: 'app-filtro-estudios',
   imports: [MatFormFieldModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatSelectModule,
-     MatCheckboxModule, ListEstudiosComponent, MatDatepickerModule, MatPaginatorModule, ],
+    MatCheckboxModule, ListEstudiosComponent, MatDatepickerModule, MatPaginatorModule, AuthenticationComponent],
   templateUrl: './filter-estudios.component.html',
   styleUrl: './filter-estudios.component.css'
 })
@@ -28,7 +29,8 @@ export class FiltroEstudiosComponent implements OnInit {
     private formbuilder = inject(FormBuilder);
     private activatedRoute = inject(ActivatedRoute);
     resultadoService = inject(ResultadosService);
-    
+    securityService = inject(SecurityService);
+
     paginationDto :paginationDTO = {pageNumber:1, recordsPage:10};
     totalRecords!:number;
     
@@ -51,6 +53,10 @@ export class FiltroEstudiosComponent implements OnInit {
             this.whriteParameterSearchURL(values as FilterEstudioDto);
         });
     }
+
+      isAuthorized(): boolean {
+            return this.securityService.isAuthenticated();
+      }
 
     searchEstudios(values: FilterEstudioDto){ //buscar peliculas 
         values.pageNumber = this.paginationDto.pageNumber;

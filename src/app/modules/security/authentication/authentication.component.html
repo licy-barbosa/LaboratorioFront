@@ -1,0 +1,9 @@
+@if (isAuthorized()){
+    <ng-content select="[authorized]">
+     autorizado
+    </ng-content>
+} @else {
+    <ng-content select="[noAuthorized]">
+        no autorizado
+    </ng-content>
+}

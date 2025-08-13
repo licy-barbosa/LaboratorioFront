@@ -10,3 +10,14 @@ export function getErrors(obj: any): string[]{
 
     return messagesError;
 }
+
+export function getErrorsIdentity(obj: any): string[]{
+    let messagesError: string[] = [];
+
+    for(let i= 0; i< obj.error.length; i++){
+        const err = obj.error[i];
+        messagesError.push(err.description);
+    }
+
+    return messagesError;
+}

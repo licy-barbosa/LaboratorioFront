@@ -1,40 +1,46 @@
-<h2 class="ms-5">Estudios</h2>
 
-<div class="row justify-content-end">
-    <div class="col-10 offset-1">    
-        <form [formGroup]="form">
-                <mat-form-field appearance="outline">
-                    <mat-label>Estudio</mat-label>
-                    <input matInput [formControl]="form.controls.nameEstudio"/>
-                </mat-form-field>
+<app-authentication rol="admin">
+    <ng-container authorized>
+        <h2 class="ms-5">Estudios</h2>
 
-            <!-- <mat-form-field appearance="outline">
-                <mat-label>Desde</mat-label>
-                <input matInput [formControl]="form.controls.desde"/>
-                <mat-hint>MM/DD/YYYY</mat-hint>
-                <mat-datepicker #picker_desde></mat-datepicker>
-                <mat-datepicker-toggle matIconSuffix [for]="picker_desde"></mat-datepicker-toggle>
-            </mat-form-field>
+        <div class="row justify-content-end">
+            <div class="col-10 offset-1">    
+                <form [formGroup]="form">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Estudio</mat-label>
+                            <input matInput [formControl]="form.controls.nameEstudio"/>
+                        </mat-form-field>
 
-            <mat-form-field appearance="outline">
-                <mat-label>Desde</mat-label>
-                <input matInput [formControl]="form.controls.hasta"/>
-                <mat-hint>MM/DD/YYYY</mat-hint>
-                <mat-datepicker #picker_hasta></mat-datepicker>
-                <mat-datepicker-toggle matIconSuffix [for]="picker_hasta"></mat-datepicker-toggle>
-            </mat-form-field> -->
+                    <!-- <mat-form-field appearance="outline">
+                        <mat-label>Desde</mat-label>
+                        <input matInput [formControl]="form.controls.desde"/>
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker #picker_desde></mat-datepicker>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker_desde"></mat-datepicker-toggle>
+                    </mat-form-field>
 
-            
-            <div class="primary col-4" >
-                <button mat-fab extended  (click)="this.limpiar()">Limpiar</button>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Desde</mat-label>
+                        <input matInput [formControl]="form.controls.hasta"/>
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker #picker_hasta></mat-datepicker>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker_hasta"></mat-datepicker-toggle>
+                    </mat-form-field> -->
+
+                    
+                    <div class="primary col-4" >
+                        <button mat-fab extended  (click)="this.limpiar()">Limpiar</button>
+                    </div>
+                </form>
             </div>
-        </form>
-    </div>
-</div>
+        </div>
 
-<app-list-estudios [estudios]="estudios"></app-list-estudios>
+        <app-list-estudios [estudios]="estudios"></app-list-estudios>
 
-<mat-paginator showFirstLastButtons [length]="totalRecords" 
-        [pageIndex]="paginationDto.pageNumber-1"
-        [pageSize]="paginationDto.recordsPage" 
-        [pageSizeOptions]="[10,25,50]" class="mat-elevation-z8" (page)="onPageChange($event)"></mat-paginator>
+        <mat-paginator showFirstLastButtons [length]="totalRecords" 
+                [pageIndex]="paginationDto.pageNumber-1"
+                [pageSize]="paginationDto.recordsPage" 
+                [pageSizeOptions]="[10,25,50]" class="mat-elevation-z8" (page)="onPageChange($event)"></mat-paginator>
+    
+    </ng-container>
+</app-authentication>
