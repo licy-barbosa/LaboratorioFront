@@ -1,15 +1,8 @@
 @if (!list)
 {
-    <div #cargando>
-        <ng-content select="[cargando]"></ng-content>
-    </div>
-
-    @if(!cargando.innerHTML.trim()){
-        <app-loading></app-loading>
-    }
+    <app-loading></app-loading>
 }
 @else if (list.length === 0) {
-
     <div #vacio>
         <ng-content select="[vacio]"></ng-content>
     </div>
@@ -20,5 +13,5 @@
         </div>
     }
 } @else {
-    <ng-content select="[contenido]"></ng-content>
+    <ng-content select="[content-items]"></ng-content>
 }

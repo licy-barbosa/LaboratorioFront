@@ -15,6 +15,5 @@ import { SecurityService } from '../../services/security.service';
 export class MenuComponent {
     securityService = inject(SecurityService);
 
-    profileName = 'Elizabeth';
     profileImage = 'https://via.placeholder.com/40'; // Cambia por imagen real
 }

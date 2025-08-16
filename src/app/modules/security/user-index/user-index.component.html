@@ -1,34 +1,36 @@
-<h2 class="ms-5">Usuarios</h2>
+<div class="d-flex justify-content-between align-items-center mb-3 mt-5">
+    <h3 class="mb-0">Usuarios</h3>
 
-<div class="row justify-content-end">
-    <div class="primary col-4" >
-        <a mat-fab extended routerLink="/users/add" ><mat-icon>add</mat-icon>Agregar</a>
-    </div>
+    <button mat-raised-button class="primary" >
+        <mat-icon>add</mat-icon> Agregar 
+    </button>
 </div>
 
- <!-- <app-list-generic [list]="users">
-   <ng-container contenido>
-         <table mat-table [dataSource]="users" class="shadow-lg p-3 mb-5 bg-body rounded">
-           <ng-container matColumnDef="email">
-                <th mat-header-cell *matHeaderCellDef>Email</th>
-                <td mat-cell *matCellDef="let element">{{ element.email }}</td>
-            </ng-container>
+<div class="table-responsive shadow-lg p-3">
+    <app-list-generic [list]="users">
+        <ng-container content-items>
+                <table mat-table [dataSource]="users" class="table table-bordered table-hover align-middle">
+                    <ng-container matColumnDef="email">
+                        <th mat-header-cell *matHeaderCellDef >Email</th>
+                        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+                    </ng-container>
 
-            <ng-container matColumnDef="acciones">
-                <th mat-header-cell *matHeaderCellDef>Acciones</th>
-                <td mat-cell *matCellDef="let element">
-                    <button mat-flat-button (click)="addAdmin(element.email)">Hacer Admin</button>
-                    <button mat-flat-button (click)="removeAdmin(element.email)">Remover Admin</button>
-                </td>
-            </ng-container>
+                    <ng-container matColumnDef="acciones">
+                        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+                        <td mat-cell *matCellDef="let element">
+                            <button mat-flat-button (click)="addAdmin(element.email)">Hacer Admin</button>
+                            <button mat-flat-button (click)="removeAdmin(element.email)">Remover Admin</button>
+                        </td>
+                    </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="showColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: showColumns"></tr> 
-        </table>
-    </ng-container> 
-</app-list-generic>  -->
+                    <tr mat-header-row *matHeaderRowDef="showColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: showColumns"></tr> 
+                </table> 
+            </ng-container> 
+    </app-list-generic>
 
-<mat-paginator showFirstLastButtons [length]="totalRecords" 
-        [pageIndex]="paginationDto.pageNumber-1"
-        [pageSize]="paginationDto.recordsPage" 
-        [pageSizeOptions]="[10,25,50]" class="mat-elevation-z8" (page)="onPageChange($event)" [pageIndex]="paginationDto.pageNumber-1"></mat-paginator>
+    <mat-paginator showFirstLastButtons [length]="totalRecords" 
+    [pageIndex]="paginationDto.pageNumber-1"
+    [pageSize]="paginationDto.recordsPage" 
+    [pageSizeOptions]="[10,25,50]"  (page)="onPageChange($event)" [pageIndex]="paginationDto.pageNumber-1"></mat-paginator>
+</div>

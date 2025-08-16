@@ -1,46 +1,52 @@
 
-<app-authentication rol="admin">
-    <ng-container authorized>
-        <h2 class="ms-5">Estudios</h2>
-
-        <div class="row justify-content-end">
-            <div class="col-10 offset-1">    
-                <form [formGroup]="form">
-                        <mat-form-field appearance="outline">
-                            <mat-label>Estudio</mat-label>
-                            <input matInput [formControl]="form.controls.nameEstudio"/>
-                        </mat-form-field>
-
-                    <!-- <mat-form-field appearance="outline">
-                        <mat-label>Desde</mat-label>
-                        <input matInput [formControl]="form.controls.desde"/>
-                        <mat-hint>MM/DD/YYYY</mat-hint>
-                        <mat-datepicker #picker_desde></mat-datepicker>
-                        <mat-datepicker-toggle matIconSuffix [for]="picker_desde"></mat-datepicker-toggle>
-                    </mat-form-field>
-
-                    <mat-form-field appearance="outline">
-                        <mat-label>Desde</mat-label>
-                        <input matInput [formControl]="form.controls.hasta"/>
-                        <mat-hint>MM/DD/YYYY</mat-hint>
-                        <mat-datepicker #picker_hasta></mat-datepicker>
-                        <mat-datepicker-toggle matIconSuffix [for]="picker_hasta"></mat-datepicker-toggle>
-                    </mat-form-field> -->
-
-                    
-                    <div class="primary col-4" >
-                        <button mat-fab extended  (click)="this.limpiar()">Limpiar</button>
-                    </div>
-                </form>
-            </div>
+<!-- <app-authentication rol="admin">
+    <ng-container authorized> -->
+        <div class="d-flex justify-content-between align-items-center mb-3 mt-5">
+            <h3 class="mb-0">Estudios</h3>
         </div>
 
-        <app-list-estudios [estudios]="estudios"></app-list-estudios>
+        <form [formGroup]="form" class="row g-3 align-items-center mb-3">
+            <div class="col-12 col-md-auto">
+                <label for="estudio" class="visually-hidden">Estudio</label>
+                <input matInput [formControl]="form.controls.nameEstudio" id="estudio" class="form-control" placeholder="Estudio..." name="nameEstudio"/>
+            </div>
 
-        <mat-paginator showFirstLastButtons [length]="totalRecords" 
+            <!-- <mat-form-field appearance="outline">
+            <mat-label>Desde</mat-label>
+            <input matInput [formControl]="form.controls.desde"/>
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker #picker_desde></mat-datepicker>
+            <mat-datepicker-toggle matIconSuffix [for]="picker_desde"></mat-datepicker-toggle>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Desde</mat-label>
+                <input matInput [formControl]="form.controls.hasta"/>
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker #picker_hasta></mat-datepicker>
+                <mat-datepicker-toggle matIconSuffix [for]="picker_hasta"></mat-datepicker-toggle>
+            </mat-form-field> 
+            -->
+
+            <div class="col-6 col-md-auto">
+                <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i> Filtrar</button>
+            </div>
+
+            <div class="col-6 col-md-auto">
+                <button type="button" class="btn btn-outline-secondary" (click)="this.limpiar()"><i class="bi bi-x-circle"></i> Limpiar</button>
+            </div>
+        </form>
+         
+        <div class="table-responsive shadow-lg p-0 p-md-2 p-lg-3">
+            <app-list-estudios [estudios]="estudios"></app-list-estudios>
+
+            <mat-paginator showFirstLastButtons [length]="totalRecords" 
                 [pageIndex]="paginationDto.pageNumber-1"
                 [pageSize]="paginationDto.recordsPage" 
-                [pageSizeOptions]="[10,25,50]" class="mat-elevation-z8" (page)="onPageChange($event)"></mat-paginator>
-    
-    </ng-container>
-</app-authentication>
+                [pageSizeOptions]="[10,25,50]" (page)="onPageChange($event)"></mat-paginator>
+        </div>
+    <!-- </ng-container>
+</app-authentication> -->
+
+
+

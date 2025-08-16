@@ -1,32 +1,39 @@
-<mat-toolbar  class="bg-secondary px-3">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
-    
-    <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap">
-        <ul class="nav me-auto mb-2 mb-lg-0 d-flex flex-wrap">
-            <li class="nav-item" >
-                <a class="nav-link text-white" [routerLink]="'pacientes'" routerLinkActive="active">Pacientes</a>
-            </li>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+    <div class="container-fluid">
+        <a class="navbar-brand" [routerLink]="'estudios'" routerLinkActive="active">My APP</a>
 
-            <li class="nav-item" >
-                <a class="nav-link text-white" [routerLink]="'estudios'" routerLinkActive="active">Estudios</a>
-            </li>
-        </ul>
-        
-        <app-authentication>
-            <ng-content authorized>
-                <div class="d-flex align-items-center mt-2 mt-lg-0">
-                    <small class="text-white fw-semibold me-2">Hello, {{securityService.getClaimValue('emailaddress')}}</small>
-                    <img [src]="profileImage" alt="Perfil" class="rounded-circle border border-light" width="40" height="40">
-                    <a mat-button (click)="securityService.logout()">Logout</a>
-                </div>
-            </ng-content>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <ng-content noAuthorized>
-                <a mat-button routerLink="login">Login</a>
-                <a mat-button routerLink="register">Registro</a>
-            </ng-content>
-        </app-authentication>
+        <div class="collapse navbar-collapse" id="menuNavbar">
+            <app-authentication>
+                <ng-content authorized>
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="'estudios'" routerLinkActive="active">Estudios</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="'pacientes'" routerLinkActive="active">Pacientes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="'users'" routerLinkActive="active">Usuarios</a>
+                        </li>
+                    </ul>
+            
+                    <div class="d-flex align-items-center mt-2 mt-lg-0">
+                        <small class="text-white fw-semibold me-2">Hello, {{securityService.getClaimValue('emailaddress')}}</small>
+                        <img [src]="profileImage" alt="Perfil" class="rounded-circle border border-light text-white" width="40" height="40">
+                        <a mat-button (click)="securityService.logout()" class="text-white">Logout</a>
+                    </div>
+                </ng-content>
+
+                <ng-content noAuthorized>
+                    <a mat-button routerLink="login" class="text-white">Login</a>
+                    <a mat-button routerLink="register" class="text-white">Registro</a>
+                </ng-content>
+            </app-authentication>
+        </div>
     </div>
-</mat-toolbar>
+</nav>

@@ -26,10 +26,10 @@ export class IndexGenericComponent<TDTO, TCreacionDTO>{
     newRoute!: string;
 
     @Input({required: true})
-    editRout!: string;
+    editRoute!: string;
 
     @Input()
-    showColumns = [ 'email', 'acciones'];
+    showColumns = [ 'id', 'nombre', 'acciones'];
 
     serviceCRUD = inject(SERVICE_CRUD_TOKEN) as any;
 

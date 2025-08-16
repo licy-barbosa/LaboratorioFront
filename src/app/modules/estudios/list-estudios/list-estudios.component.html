@@ -5,32 +5,27 @@
     <p>No hay elementos para mostrar</p>
 }
 @else{
-<div class="row">
-    <div class="col-10 offset-1">
-        <table class="table mat-elevation-z8">
-            <thead>
-              <tr>
-                <th scope="col">Paciente</th>
-                <th scope="col">Fecha de nacimiento</th>
-                <th scope="col">Fecha de estudio</th>
-                <th scope="col">Estudio</th>
-                <th scope="col">Resultado</th>
-              </tr>
-            </thead>
-            <tbody>
-                @for(estudio of estudios; track $index){
-                     <tr>
-                        <td>{{estudio.paciente.nombre}}</td>
-                        <!-- <td>{{(estudio.birthdate).toDateString()}}</td> -->
-                        <td>{{estudio.birthdate}}</td>
-                        <td>{{estudio.date}}</td>
-                        <td>{{estudio.nameEstudio}}</td>
-                        <td>{{estudio.resultado}}</td>  
-                           
-                    </tr> 
-                }
-            </tbody>
-        </table>
-    </div>
-</div>
+    <table class="table table-bordered table-hover align-middle">
+        <thead>
+            <tr>
+            <th scope="col">Paciente</th>
+            <th scope="col">Fecha de nacimiento</th>
+            <th scope="col">Fecha de estudio</th>
+            <th scope="col">Estudio</th>
+            <th scope="col">Resultado</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(estudio of estudios; track $index){
+                    <tr>
+                    <td>{{estudio.paciente.nombre}}</td>
+                    <!-- <td>{{(estudio.birthdate).toDateString()}}</td> -->
+                    <td>{{estudio.birthdate}}</td>
+                    <td>{{estudio.date}}</td>
+                    <td>{{estudio.nameEstudio}}</td>
+                    <td>{{estudio.resultado}}</td>  
+                </tr> 
+            }
+        </tbody>
+    </table>
 }
