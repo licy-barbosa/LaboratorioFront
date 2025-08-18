@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { IndexComponent } from './modules/pacientes/index/index.component';
-import { isAdminGuard } from './share/guards/is-admin.guard';
+import { isAdminGuard, isUserGuard} from './share/guards/is-admin.guard';
 import { LoginComponent } from './modules/security/login/login.component';
 import { AddComponent } from './modules/pacientes/add-pacientes/add-pacientes.component';
 import { FiltroEstudiosComponent } from './modules/estudios/filter-estudios/filter-estudios.component';
@@ -9,15 +9,15 @@ import { RegisterComponent } from './modules/security/register/register.componen
 import { UserIndexComponent } from './modules/security/user-index/user-index.component';
 
 export const routes: Routes = [
-    {path:'pacientes', component:IndexComponent, canActivate: [isAdminGuard]},
-    {path:'pacientes/add', component:AddComponent, canActivate: [isAdminGuard]},
-    {path:'pacientes/edit/:id', component:EditPacientesComponent, canActivate: [isAdminGuard]},
+    {path:'pacientes', component:IndexComponent, canActivate: [isUserGuard]},
+    {path:'pacientes/add', component:AddComponent, canActivate: [isUserGuard]},
+    {path:'pacientes/edit/:id', component:EditPacientesComponent, canActivate: [isUserGuard]},
 
-    {path:'users', component:UserIndexComponent},
+    {path:'users', component:UserIndexComponent, canActivate: [isAdminGuard]},
 
-    {path:'estudios', component:FiltroEstudiosComponent, canActivate: [isAdminGuard]},
+    {path:'estudios', component:FiltroEstudiosComponent, canActivate: [isUserGuard]},
     
     {path:'login', component:LoginComponent},
     {path:'register', component:RegisterComponent},
-    {path: '**', component:IndexComponent}
+    {path: '**', component:IndexComponent, canActivate: [isUserGuard]}
 ];

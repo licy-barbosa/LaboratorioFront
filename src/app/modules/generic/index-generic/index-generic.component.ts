@@ -52,8 +52,7 @@ export class IndexGenericComponent<TDTO, TCreacionDTO>{
 	}
 
 	recordDelete(id: number){
-        this.serviceCRUD.delete(id).subscribe(() => {
-            console.log(`Record with id ${id} deleted`);      
+        this.serviceCRUD.delete(id).subscribe(() => {   
             this.paginationDto.pageNumber = 1; // Reset to first page after deletion
             this.loadRecords();       
         });    

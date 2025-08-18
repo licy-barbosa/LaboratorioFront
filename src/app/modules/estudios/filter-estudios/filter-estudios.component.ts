@@ -14,12 +14,11 @@ import { ResultadosService } from '../../../services/resultados.service';
 import { ListEstudiosComponent } from "../list-estudios/list-estudios.component";
 import { debounceTime } from 'rxjs';
 import { SecurityService } from '../../../services/security.service';
-import { AuthenticationComponent } from "../../security/authentication/authentication.component";
 
 @Component({
   selector: 'app-filtro-estudios',
   imports: [MatFormFieldModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatSelectModule,
-    MatCheckboxModule, ListEstudiosComponent, MatDatepickerModule, MatPaginatorModule, AuthenticationComponent],
+    MatCheckboxModule, ListEstudiosComponent, MatDatepickerModule, MatPaginatorModule], 
   templateUrl: './filter-estudios.component.html',
   styleUrl: './filter-estudios.component.css'
 })

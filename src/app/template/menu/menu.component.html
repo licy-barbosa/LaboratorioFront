@@ -17,16 +17,25 @@
                         <li class="nav-item">
                             <a class="nav-link" [routerLink]="'pacientes'" routerLinkActive="active">Pacientes</a>
                         </li>
+                    </ul>
+                </ng-content>
+            </app-authentication>
+
+            <app-authentication [rol]="'admin'">
+                <ng-content authorized>
+                    <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a class="nav-link" [routerLink]="'users'" routerLinkActive="active">Usuarios</a>
                         </li>
                     </ul>
-            
-                    <div class="d-flex align-items-center mt-2 mt-lg-0">
-                        <small class="text-white fw-semibold me-2">Hello, {{securityService.getClaimValue('emailaddress')}}</small>
-                        <img [src]="profileImage" alt="Perfil" class="rounded-circle border border-light text-white" width="40" height="40">
-                        <a mat-button (click)="securityService.logout()" class="text-white">Logout</a>
-                    </div>
+                </ng-content>
+            </app-authentication>
+
+            <app-authentication class="d-flex align-items-center ms-auto mt-2 mt-lg-0">
+                <ng-content authorized>
+                    <small class="text-white fw-semibold me-2">Hello, {{securityService.getClaimValue('emailaddress')}}</small>
+                    <img [src]="profileImage" alt="Perfil" class="rounded-circle border border-light text-white" width="40" height="40">
+                    <a mat-button (click)="securityService.logout()" class="text-white">Logout</a>
                 </ng-content>
 
                 <ng-content noAuthorized>

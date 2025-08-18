@@ -60,7 +60,7 @@ export class SecurityService {
     isAuthenticated(): boolean {
        // return !!localStorage.getItem('authToken');
         const token = localStorage.getItem(this.tokenKey);
-
+        
         if (!token) {
             return false;       
         }
@@ -78,7 +78,7 @@ export class SecurityService {
 
     getUserRole(): string | null {
         const isadmin = this.getClaimValue('isadmin');
-        
+
         if(isadmin === 'true') {
             return 'admin';
         }
@@ -91,11 +91,11 @@ export class SecurityService {
         return localStorage.getItem(this.tokenKey);
     }
 
-    getClaimValue( claimSearch: string): string | undefined {
+    getClaimValue( claimSearch: string): string  {
         const token = localStorage.getItem(this.tokenKey);
 
         if (!token) {
-            return undefined;
+            return '';
         }
 
         const base64Url = token.split('.')[1];
@@ -106,7 +106,11 @@ export class SecurityService {
         const claimKey = Object.keys(payload).find(k =>
             k.toLowerCase().includes(claimSearch.toLowerCase())
         );
-
-        return claimKey ? payload[claimKey] : undefined;
+        
+        console.table(claimKey);
+        if(claimKey && claimKey==='isadmin'){
+            return claimKey ? payload[claimKey][0].toString() : 'user';
+        }
+        return claimKey ? payload[claimKey].toString() : '';
     }
 }
